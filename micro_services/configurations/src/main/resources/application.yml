@@ -1,0 +1,30 @@
+server:
+    port: 8802
+
+spring:
+  application:
+    name: configuration
+  profiles:
+    active:
+    - native
+  cloud:
+    config:
+      profile: configure
+      label: master
+      discovery:
+        enabled: true
+        service-id: configurations
+      server:
+        git:
+          uri: https://github.com/ZhenxingXiao/cellor.git
+          search-paths:
+          - /configurations
+          username: shinetech
+          passphrase: Shinetech@2020
+      uri:
+      - http://localhost:8802
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8801/eureka
